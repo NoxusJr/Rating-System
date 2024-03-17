@@ -1,20 +1,20 @@
 <?php
 
-require_once '../config/execute_commands.php';
+require_once '../config/helper_commands_migrations.php';
 
 function createTableAvaliacoes(){
 
     $command = "CREATE TABLE IF NOT EXISTS `evaluation_system`.`avaliacoes` (
                 `id_avaliacao` INT NOT NULL AUTO_INCREMENT,
                 `data_avaliacao` DATE NOT NULL,
-                `id_usuarios` INT NOT NULL,
+                `id_usuario` INT NOT NULL,
                 `id_questao` INT NOT NULL,
                 `nota_questao` INT NOT NULL,
-                INDEX `fk_avaliacoes_funcioanrios1_idx` (`id_usuarios` ASC),
+                INDEX `fk_avaliacoes_usuarios1_idx` (`id_usuario` ASC),
                 PRIMARY KEY (`id_avaliacao`),
-                CONSTRAINT `fk_avaliacoes_funcioanrios1`
-                    FOREIGN KEY (`id_usuarios`)
-                    REFERENCES `evaluation_system`.`funcionarios` (`id_usuarios`)
+                CONSTRAINT `fk_avaliacoes_usuarios1`
+                    FOREIGN KEY (`id_usuario`)
+                    REFERENCES `evaluation_system`.`usuarios` (`id_usuario`)
                     ON DELETE NO ACTION
                     ON UPDATE NO ACTION,
                 CONSTRAINT `fk_avaliacoes_questoes`
@@ -25,7 +25,7 @@ function createTableAvaliacoes(){
             ) ENGINE = InnoDB;
             ";
 
-    executeCommand(($command));
+    executeInternalCommand(($command));
 }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../config/execute_commands.php';
+require_once '../config/helper_commands_migrations.php';
 
 function createTableQuestoes(){
 
@@ -13,7 +13,7 @@ function createTableQuestoes(){
                 ON UPDATE NO ACTION)
                 ENGINE = InnoDB;";
 
-    executeCommand($command);
+    executeInternalCommand($command);
 }
 
 

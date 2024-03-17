@@ -1,6 +1,6 @@
 <?php
 
-require_once '../config/execute_commands.php';
+require_once '../config/helper_commands_migrations.php';
 
 function createTableUsuarios(){
 
@@ -12,15 +12,15 @@ function createTableUsuarios(){
                     `permissao` VARCHAR(20) NOT NULL, 
                     `id_gerente` INT NULL,
                     PRIMARY KEY (`id_usuario`),
-                    INDEX `fk_funcioanrios_gerentes_idx` (`id_gerente` ASC) VISIBLE,
-                    CONSTRAINT `fk_funcioanrios_gerentes`
+                    INDEX `fk_usuarios_gerentes_idx` (`id_gerente` ASC) VISIBLE,
+                    CONSTRAINT `fk_usuarios_gerentes`
                     FOREIGN KEY (`id_gerente`)
                     REFERENCES `evaluation_system`.`gerentes` (`id_gerente`)
                     ON DELETE NO ACTION
                     ON UPDATE NO ACTION)
                 ENGINE = InnoDB;";
 
-    executeCommand(($command));
+    executeInternalCommand(($command));
 }
 
 

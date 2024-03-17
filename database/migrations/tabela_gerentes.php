@@ -1,6 +1,6 @@
 <?php
 
-require_once '../config/execute_commands.php';
+require_once '../config/helper_commands_migrations.php';
 
 function createTableGerentes(){
 
@@ -12,7 +12,7 @@ function createTableGerentes(){
                 ENGINE = InnoDB;
                 ";
 
-    executeCommand(($command));
+    executeInternalCommand(($command));
 }
 
 

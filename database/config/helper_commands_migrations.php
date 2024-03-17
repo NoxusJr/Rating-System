@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/connection.php';
 
-function executeCommand($command){
+function executeInternalCommand($command){
     global $pdo;
 
     $cursor = $pdo->prepare($command);

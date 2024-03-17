@@ -1,8 +1,8 @@
 <?php 
 
-require_once '../migrations/tabela_administradores.php';
+require_once '../migrations/tabela_questoes.php';
 require_once '../migrations/tabela_avaliacoes.php';
-require_once '../migrations/tabela_funcionarios.php';
+require_once '../migrations/tabela_usuarios.php';
 require_once '../migrations/tabela_gerentes.php';
 
 $table = $argv[1];

@@ -2,15 +2,16 @@
 
 require_once '../config/execute_commands.php';
 
-function createTableFuncionarios(){
+function createTableUsuarios(){
 
-    $command = "CREATE TABLE IF NOT EXISTS `evaluation_system`.`funcionarios` (
-                    `id_funcionario` INT NOT NULL AUTO_INCREMENT,
+    $command = "CREATE TABLE IF NOT EXISTS `evaluation_system`.`usuarios` (
+                    `id_usuario` INT NOT NULL AUTO_INCREMENT,
                     `nome` VARCHAR(50) NOT NULL,
                     `login` VARCHAR(64) NOT NULL,
                     `senha` VARCHAR(64) NOT NULL,
-                    `id_gerente` INT NOT NULL,
-                    PRIMARY KEY (`id_funcionario`),
+                    `permissao` VARCHAR(20) NOT NULL, 
+                    `id_gerente` INT NULL,
+                    PRIMARY KEY (`id_usuario`),
                     INDEX `fk_funcioanrios_gerentes_idx` (`id_gerente` ASC) VISIBLE,
                     CONSTRAINT `fk_funcioanrios_gerentes`
                     FOREIGN KEY (`id_gerente`)
@@ -23,9 +24,9 @@ function createTableFuncionarios(){
 }
 
 
-function dropTableFuncionarios(){
+function dropTableUsuarios(){
 
-    $command = "DROP TABLE IF EXISTS funcionarios;";
+    $command = "DROP TABLE IF EXISTS usuarios;";
 
     dropTable($command,'avaliacoes');
 }

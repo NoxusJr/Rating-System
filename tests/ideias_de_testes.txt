@@ -1,0 +1,37 @@
+TESTE MODEL: 
+    -> Passando numeros onde era pra ser string == FALSE
+    -> Passando string onde era pra ser numero == FALSE
+    -> Não passando parametro == ERROR
+    -> Chamar a função de forma certa == TRUE
+
+
+
+TESTE CONTROLLER:
+    -> Tentar burlar o router == REDIRECT HOME
+    -> Testar o retorno (redirectPage) dos middlewares == TRUE
+
+
+TESTE SECURITY:
+    -> Tentar passar parametro post inexistente == FALSE
+    -> Tentar passar parametro post existente == TRUE
+
+
+====================================================================================
+CHECKBOX TESTES:
+
+MODEL:
+    account_login : NOT
+    account_manager: NOT
+    account_worker: NOT
+    send_review: NOT
+
+
+CONTROLLER:
+    alerts: NOT
+    middlewares: NOT
+    router: NOT
+
+
+SECURITY:
+    anti_duplicate_login: NOT
+    verify_parameters: NOT

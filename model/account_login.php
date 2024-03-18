@@ -22,6 +22,6 @@ function loginAccount(string $login, string $senha){
 
         return [$result,$level];
     } else {
-        return [false,'Conta nao encontrada'];
+        return [false,'Senha incorreta'];
     }
 }

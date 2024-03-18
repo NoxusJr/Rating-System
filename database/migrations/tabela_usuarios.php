@@ -7,7 +7,7 @@ function createTableUsuarios(){
     $command = "CREATE TABLE IF NOT EXISTS `evaluation_system`.`usuarios` (
                     `id_usuario` INT NOT NULL AUTO_INCREMENT,
                     `nome` VARCHAR(50) NOT NULL,
-                    `login` VARCHAR(64) NOT NULL,
+                    `login` CHAR(8) NOT NULL,
                     `senha` VARCHAR(64) NOT NULL,
                     `permissao` VARCHAR(20) NOT NULL, 
                     `id_gerente` INT NULL,

@@ -24,7 +24,7 @@ MODEL:
     account_manager: NOT
     account_worker: NOT
     send_review: NOT
-
+    generateLogin: NOT
 
 CONTROLLER:
     alerts: NOT

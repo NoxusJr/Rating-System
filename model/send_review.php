@@ -1,14 +1,17 @@
 <?php 
 
 
-function sendReview($q1,$q2,$q3,$q4,$q5,$q6,$q7,$q8,$q9,$q10,$q11,$q12,$q13,$q14,$q15,$q16,$q17,$q18){
-    $response = [$q1,$q2,$q3,$q4,$q5,$q6,$q7,$q8,$q9,$q10,$q11,$q12,$q13,$q14,$q15,$q16,$q17,$q18];
-    $id_user_session = '';
-
-    for ($i=0; $i <18; $i++){
-        $note = $response[$i];
-        $id_question = $i+1;
-        executeSqlInsertQuestion($id_user_session,$id_question,$note);   
+function sendReview($response,$id_user_session){
+    try{
+        for ($i=0; $i <18; $i++){
+            $note = $response[$i];
+            $id_question = $i+1;
+            executeSqlInsertQuestion($id_user_session,$id_question,$note);   
+        }
+        
+        return [true, 'Avaliacao enviada com sucesso'];
+    } catch (Exception $e){
+        return [false, 'Ocorreu um erro ao enviar a avaliação'];
     }
 }
 

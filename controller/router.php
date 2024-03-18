@@ -8,7 +8,7 @@ switch ($route){
         header('Location: /');
         break;
 
-    case '/create_employee_account':
+    case '/create_worker_account':
         break;
 
     case '/create_manager_account':

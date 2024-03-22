@@ -15,11 +15,11 @@ switch ($route){
         exit();
 
 
-    case '/login_account':
+    case '/loginAccount':
         $login = getSecureParameter($_POST,'login','/');
-        $senha = getSecureParameter($_POST,'senha','/');
+        $password = getSecureParameter($_POST,'password','/');
 
-        $redirectPage = middleLoginAccount($login,$senha);
+        $redirectPage = middleLoginAccount($login,$password);
         header("Location: $redirectPage");
         break;
 
@@ -44,29 +44,18 @@ switch ($route){
         break;
 
 
-    case '/send_review':
-        $q1= getSecureParameter($_POST,'q1','/');
-        $q2= getSecureParameter($_POST,'q2','/');
-        $q3= getSecureParameter($_POST,'q3','/');
-        $q4= getSecureParameter($_POST,'q4','/');
-        $q5= getSecureParameter($_POST,'q5','/');
-        $q6= getSecureParameter($_POST,'q6','/');
-        $q7= getSecureParameter($_POST,'q7','/');
-        $q8= getSecureParameter($_POST,'q8','/');
-        $q9= getSecureParameter($_POST,'q9','/');
-        $q10= getSecureParameter($_POST,'q10','/');
-        $q11= getSecureParameter($_POST,'q11','/');
-        $q12= getSecureParameter($_POST,'q12','/');
-        $q13= getSecureParameter($_POST,'q13','/');
-        $q14= getSecureParameter($_POST,'q14','/');
-        $q15= getSecureParameter($_POST,'q15','/');
-        $q16= getSecureParameter($_POST,'q16','/');
-        $q17= getSecureParameter($_POST,'q17','/');
-        $q18= getSecureParameter($_POST,'q18','/');
+    case '/sendReview':
+        $sourcePage = "/view/pages/worker/toAssess.php";
 
-        $redirectPage = middleSendReview($q1,$q2,$q3,$q4,$q5,$q6,$q7,$q8,$q9,$q10,$q11,$q12,$q13,$q14,$q15,$q16,$q17,$q18);
+        $validation = getSecureParameter($_POST,'validation',$sourcePage);
+        $response = getSecureParameter($_POST,'response',$sourcePage);
+        $response = explode(",", $response);
+        $idQuestions = getSecureParameter($_POST,'idQuestions',$sourcePage);
+        $idQuestions = explode(",", $idQuestions);
+
+        $redirectPage = middleSendReview($validation,$response,$idQuestions);
         header("Location: $redirectPage");
-        break;
+        break;  
 }
 
 

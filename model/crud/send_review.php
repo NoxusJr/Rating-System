@@ -4,33 +4,42 @@ $directory = dirname(dirname(__DIR__));
 require_once $directory. "/database/config/connection.php";
 
 
-function sendReview($response,$id_user_session){
-    try{
-        for ($i=0; $i <18; $i++){
-            $note = $response[$i];
-            $id_question = $i+1;
-            executeSqlInsertQuestion($id_user_session,$id_question,$note);   
-        }
-        
-        return [true, 'Avaliacao enviada com sucesso'];
-    } catch (Exception $e){
-        return [false, 'Ocorreu um erro ao enviar a avaliação'];
+function sendReview($response,$idUserSession,$idQuestions){
+    $date = date('Y-m-d');
+
+    $result = runInserts($date,$idUserSession,$idQuestions,$response);
+
+    if($result){
+        $msg = 'Avaliação realizada com sucesso';
+    } else {
+        $msg = 'Ouve um erro ao avaliar';
     }
+
+    return [$result,$msg];
 }
 
 
-function executeSqlInsertQuestion($id_user_session,$id_question,$note){
+function runInserts($date,$idUser,$idQuestions,$response){
     global $pdo;
 
-    $command = "INSERT INTO avaliacoes (data_avaliacao,id_usuario,id_questao,nota_questao) VALUES (:data_avaliacao,:id_usuario,:id_questao,:nota_questao)";
-    $cursor = $pdo->prepare($command);
-    
-    $date = date('Y-m-d H:i:s');
+    try{
+        $pdo->beginTransaction();
 
-    $cursor->bindParam(':data_avaliacao', $date);
-    $cursor->bindParam(':id_usuario', $id_user_session);
-    $cursor->bindParam(':id_questao', $id_question);
-    $cursor->bindParam(':nota_questao', $note);
+        for($i=0; $i < count($response); $i++){
+            $command = "INSERT INTO avaliacoes (data_avaliacao,id_usuario,id_questao,nota_questao) VALUES (:date,:idUser,:idQuestion,:note)";
+            $cursor = $pdo->prepare($command);
+            $cursor->bindParam(':date',$date);
+            $cursor->bindParam(':idUser',$idUser);
+            $cursor->bindParam(':idQuestion',$idQuestions[$i]);
+            $cursor->bindParam(':note',$response[$i]);
 
-    $cursor->execute();
+            $cursor->execute();
+        }
+
+        $pdo->commit();
+        return True;
+    } catch (PDOException $e){
+        $pdo->rollBack();
+        return False;
+    }
 }

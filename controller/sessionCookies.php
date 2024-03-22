@@ -1,8 +1,9 @@
 <?php
 
 
-function setMensageCookie(){
-
+function setMensageCookie($type,$msg){
+    $types = ['alert','erro','response'];
+    $_SESSION[$type] = $msg;
 }
 
 

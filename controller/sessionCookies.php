@@ -1,20 +1,26 @@
 <?php
 
+$directoryGetNameSector = dirname(__DIR__);
+require_once $directoryGetNameSector. "/model/auxiliar/get_infos.php";
 
 function setMensageCookie($type,$msg){
-    $types = ['alert','erro','response'];
+    session_start();
+    
+    $types = ['error','response'];
     $_SESSION[$type] = $msg;
 }
 
 
-function setSessionCookies($id_user,$permission){
+function setSessionCookies($idUser,$permission,$idSetor){
     session_start();
     
-    $_SESSION['id_user'] = $id_user;
+    $_SESSION['idUser'] = $idUser;
     $_SESSION['permission'] = $permission;
-}
 
+    if ($permission = 'funcionario'){
+        $nomeSetor = getNameSector($idSetor);
 
-function closeSession(){
-    session_destroy();
+        $_SESSION['idSetor'] = $idSetor;
+        $_SESSION['nomeSetor'] = $nomeSetor['nome'];
+    }
 }

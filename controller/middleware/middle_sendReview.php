@@ -1,9 +1,9 @@
 <?php
 
-$directory = dirname(dirname(__DIR__));
+$directoryReturnQuestions = dirname(dirname(__DIR__));
 $directorySetAlert = dirname(__DIR__);
 require_once $directorySetAlert."/sessionCookies.php";
-require_once $directory."/model/crud/send_review.php";
+require_once $directoryReturnQuestions."/model/crud/send_review.php";
 
 
 function middleSendReview($validation,$response,$idQuestions){
@@ -13,7 +13,9 @@ function middleSendReview($validation,$response,$idQuestions){
         $redirectPage = "../view/pages/worker/toAssess.php";
     
     } else {
-        $idUserSession = $_SESSION['id_user'] ;
+        session_start();
+
+        $idUserSession = $_SESSION['idUser'] ;
         $result = sendReview($response,$idUserSession,$idQuestions);
         
         if($result[0]){

@@ -1,11 +1,12 @@
 <?php 
 
-$directory = dirname(__DIR__);
-require $directory. '/database/config/connection.php';
+$directoryReturnQuestions = dirname(dirname(__DIR__));
+require $directoryReturnQuestions. '/database/config/connection.php';
 
 
 function checkLoginAlreadyExists(string $login){
     global $pdo;
+    
     $command = "SELECT * FROM usuarios WHERE login =:login";
     $cursor = $pdo->prepare($command);
     $cursor->bindValue(":login", $login);

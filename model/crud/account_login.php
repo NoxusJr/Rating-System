@@ -1,7 +1,7 @@
 <?php
 
-$directory = dirname(dirname(__DIR__));
-require_once $directory."/security/anti_duplicate_login.php";
+$directoryReturnQuestions = dirname(__DIR__);
+require_once $directoryReturnQuestions."/auxiliar/check_login_exists.php";
 
 
 function loginAccount(string $login, string $senha){
@@ -18,7 +18,7 @@ function loginAccount(string $login, string $senha){
     $result = password_verify($senha, $hash);
 
     if ($result){
-        $info = [$data['id_usuario'],$data['permissao']];
+        $info = [$data['id_usuario'],$data['permissao'],$data['id_setor']];
 
         return [$result,$info];
     } else {

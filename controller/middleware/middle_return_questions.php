@@ -1,9 +1,9 @@
 <?php
 
-$directory = dirname(dirname(__DIR__));
+$directoryReturnQuestions = dirname(dirname(__DIR__));
 $directorySetAlert = dirname(__DIR__);
 require_once $directorySetAlert."/sessionCookies.php";
-require_once $directory."/model/crud/return_questions.php";
+require_once $directoryReturnQuestions."/model/crud/return_questions.php";
 
 
 function getQuestions($sector){

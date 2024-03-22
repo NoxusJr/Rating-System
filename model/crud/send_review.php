@@ -1,7 +1,7 @@
 <?php 
 
-$directory = dirname(dirname(__DIR__));
-require_once $directory. "/database/config/connection.php";
+$directoryReturnQuestions = dirname(dirname(__DIR__));
+require_once $directoryReturnQuestions. "/database/config/connection.php";
 
 
 function sendReview($response,$idUserSession,$idQuestions){
@@ -26,7 +26,7 @@ function runInserts($date,$idUser,$idQuestions,$response){
         $pdo->beginTransaction();
 
         for($i=0; $i < count($response); $i++){
-            $command = "INSERT INTO avaliacoes (data_avaliacao,id_usuario,id_questao,nota_questao) VALUES (:date,:idUser,:idQuestion,:note)";
+            $command = "INSERT INTO avaliacoes (data,id_usuario,id_questao,nota) VALUES (:date,:idUser,:idQuestion,:note)";
             $cursor = $pdo->prepare($command);
             $cursor->bindParam(':date',$date);
             $cursor->bindParam(':idUser',$idUser);

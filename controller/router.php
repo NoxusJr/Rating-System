@@ -1,10 +1,9 @@
 <?php
 
-require_once "./middleware/middle_createWorkerAccount.php";
-require_once "./middleware/middle_createManagerAccount.php";
-require_once "./middleware/middle_loginAccount.php";
-require_once "./middleware/middle_sendReview.php";
+$directoryMiddle = __DIR__;
 
+require_once $directoryMiddle."/middleware/middle_loginAccount.php";
+require_once $directoryMiddle."/middleware/middle_sendReview.php";
 
 $route = $_POST['route'] ?? '/';
 
@@ -12,7 +11,7 @@ $route = $_POST['route'] ?? '/';
 switch ($route){
     case '/':
         header('Location: /');
-        exit();
+        break;
 
 
     case '/loginAccount':
@@ -24,26 +23,13 @@ switch ($route){
         break;
 
 
-    case '/create_worker_account':
+    case '/createAccountt':
         $nome = getSecureParameter($_POST,'nome','/');
-        $login = getSecureParameter($_POST,'login','/');
-        $senha = getSecureParameter($_POST,'senha','/');
-        $setor = getSecureParameter($_POST,'setor','/');
 
-        $redirectPage = middleCreateWorkerAccount($nome,$login,$senha,$setor);
         header("Location: $redirectPage");
         break;
 
-
-    case '/create_manager_account':
-        $nome = getSecureParameter($_POST,'nome','/');
-        $setor = getSecureParameter($_POST,'setor','/');
-
-        $redirectPage = middleCreateManagerAccount($nome,$setor);
-        header("Location: $redirectPage");
-        break;
-
-
+        
     case '/sendReview':
         $sourcePage = "/view/pages/worker/toAssess.php";
 
@@ -57,6 +43,7 @@ switch ($route){
         header("Location: $redirectPage");
         break;  
 }
+
 
 
 function getSecureParameter($method,$parameter,$sourcePage){

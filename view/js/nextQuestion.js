@@ -15,7 +15,7 @@ function getIdDataBaseQuestion(iterator){
     let div = document.getElementById(idDiv)
     let id = div.querySelector('input[type=hidden]')
     id = (id.value)
-
+    
     return id
 }
 

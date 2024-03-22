@@ -1,10 +1,16 @@
 <?php
+    session_start();
 
     $directory = dirname(dirname(dirname(__DIR__)));
     require_once $directory. "/controller/middleware/middle_return_questions.php";
+    require_once $directory. "/model/auxiliar/get_infos.php";
 
-    $infos = getQuestions('abc');
-    $sizeInfos = count($infos);
+
+    $result = toAssess($_SESSION['idSetor']);
+
+    $infos = $result[1];
+    $sizeInfos = $result[2];
+    
 ?>
 
 <!DOCTYPE html>

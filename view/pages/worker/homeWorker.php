@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    $root = dirname(dirname(dirname(__DIR__)));
+    require_once $root."/security/protect_page.php";
+    protectPage('funcionario','/');	
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +29,7 @@
             <p>user infos aleatorio</p>
         </div>
 
-        <div class="elements-div" id="to-assess">
+        <div class="elements-div assess" id="to-assess">
             <h2>AVALIAR</h2>
             <p>avaliação disponivel</p>
         </div>
@@ -34,5 +38,14 @@
             <h2>Histórico</h2>
         </div>
     </main>
+            
+    <script>
+        document.querySelector('.assess').addEventListener('click', function() {
+            window.location.href = 'toAssess.php';
+        }); 
+    </script>
+
+    
+    <script src="../../js/logoff.js"></script>
 </body>
 </html>

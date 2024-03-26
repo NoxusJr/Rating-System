@@ -1,15 +1,14 @@
 <?php
     session_start();
 
-    $directory = dirname(dirname(dirname(__DIR__)));
-    require_once $directory. "/controller/middleware/middle_return_questions.php";
-    require_once $directory. "/model/auxiliar/get_infos.php";
 
+    $root = dirname(dirname(dirname(__DIR__)));
+    require_once $root."/security/protect_page.php";	
 
-    $result = toAssess($_SESSION['idSetor']);
+    $result = protectPage('funcionario','/',true);
 
-    $infos = $result[1];
-    $sizeInfos = $result[2];
+    $infos = $result[0];
+    $sizeInfos = $result[1];
     
 ?>
 

@@ -5,48 +5,51 @@ require_once $root."/Mvc/model/create.php";
 
 
 function executeCreateTest(){
-
-    $name = "George";
-    $permission = "funcionario";
-    $idSector = 1;
-
-    $resTrueCNS = createNewSector("setorTeste");
-    if($resTrueCNS[0]){
-        $msgTrueCNS = "OK";
-    } else {
-        $msgTrueCNS = "ERROR: createNewSector -> resTrueCNS (line 13)";
+    if (session_status() == PHP_SESSION_NONE){
+        session_start();
     }
-    echo "$msgTrueCNS\n";
 
+    $_SESSION['idUser'] = 1;
 
-
-    $resFalseCNS = createNewSector("");
-    if($resFalseCNS[0] === false){
-        $msgFalseCNS = "OK";
+    $resCreateSector = createNewSector("TI");
+    if ($resCreateSector[0]){
+        echo "OK: createNewSector()\n";
     } else {
-        $msgFalseCNS = "ERROR: createNewSector -> resFalseCNS (line 23)";
+        $e = $resCreateSector[1];
+        echo "ERROR: createNewSector() --> $e\n";
     }
-    echo "$msgFalseCNS\n";
-    
 
+    echo "-------------------\n";
 
-    $resTrueCWA = createWorkerAccount($name,$permission,$idSector);
-    if($resTrueCWA[0]){
-        $msgTrueCWA = "OK";
+    $resCreateAccount = createWorkerAccount("George",1);
+    if ($resCreateAccount[0]){
+        echo "OK: createWorkerAccount()\n";
     } else {
-        $msgTrueCWA = "ERROR: createWorkerAccount -> resTrueCWA (line 33)";
+        $e = $resCreateAccount[1];
+        echo "ERROR: createWorkerAccount() -> $e\n";
     }
-    echo "$msgTrueCWA\n";
 
+    echo "-------------------\n";
 
-
-    $resFalseCWA = createWorkerAccount($name,$permission,"ola");
-    if($resFalseCWA[0] === false){
-        $msgFalseCWA = "OK";
+    $resCreateNewQuestion = createNewQuestion("Voce gosta de php?",1);
+    if ($resCreateNewQuestion[0]){
+        echo "OK: createNewQuestion()\n";
     } else {
-        $msgFalseCWA = "ERROR: createWorkerAccount -> resFalseCWA (line 43)";
+        $e = $resCreateNewQuestion[1];
+        echo "ERROR: createNewQuestion() -> $e\n";
     }
-    echo "$msgFalseCWA\n";
+
+    echo "-------------------\n";
+
+    $resCreateRating = createRating([5],[1]);
+    if ($resCreateRating[0]){
+        echo "OK: createRating()\n";
+    } else {
+        $e = $resCreateRating[1];
+        echo "ERROR: createRating()\n";
+    }
+
+    echo "-------------------\n";
 }
 
 executeCreateTest();

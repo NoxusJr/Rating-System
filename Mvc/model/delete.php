@@ -26,7 +26,7 @@ function deleteQuestion($idQuestion){
 function deleteWorker($idUser){
     try{
         global $pdo;
-        
+            
         $command = "DELETE FROM users WHERE id_user = :idUser";
 
         $cursor = $pdo->prepare($command);

@@ -112,6 +112,12 @@ function getSecureParameter($method,$parameter,$sourcePage,$permissionRequired){
 
     } else {
         $validParameter = $method[$parameter];
+        $trimmed = trim($validParameter);
+        
+        if (empty($trimmed)){
+            header("Location: $sourcePage");   
+            exit(); 
+        }
 
         if ($validParameter == "null"){
             header("Location: $sourcePage");   

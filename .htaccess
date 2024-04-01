@@ -1,0 +1,16 @@
+Options -Indexes
+
+<FilesMatch ".*">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>
+
+DirectoryIndex Mvc/view/index.php
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/Mvc/view/index\.php$
+RewriteRule ^ - [R=404,L]
+

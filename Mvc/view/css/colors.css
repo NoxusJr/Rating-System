@@ -1,0 +1,186 @@
+
+:root{
+    --background:#f5f5f5;
+    --elements-div:#D9D9D9;
+    --form:#999999;
+    --label:#606060;
+    --text-init-black:#000000;
+    --input-select:#FFBD59;
+    --label-text:#FFFFFF;
+    --input-radio:#FFFFFF;
+    --next-question:#606060;
+    --border:#000000;
+    --box:rgb(172, 172, 172);
+    --expanded:rgb(255, 255, 255);
+    --availableFalse:rgb(145, 6, 6);
+    --loginSubmit:#000;
+    --rowOdd:#FFF;
+    --rowEven:#dfd7d7;
+    --arrow-back:#000;
+    --th:rgb(126, 47, 47);
+    --delete:rgb(212,0,0);
+    --button-background:rgb(165, 165, 165);
+    --button-color:#ebebe7;
+    --select-background:#ebebeb;
+    --p-media:black;
+}
+
+.dark:root{
+    --background:#1d1d1d;
+    --elements-div:rgb(59, 59, 59);
+    --form:#999999;
+    --label:#606060;
+    --text-init-black:#ffffff;
+    --input-select:#FFBD59;
+    --label-text:#FFFFFF;
+    --input-radio:#a0a0a0;
+    --next-question:#606060;
+    --border:#ffffff;
+    --box:rgb(129, 129, 129);
+    --expanded:rgb(187, 187, 187);
+    --availableFalse:rgb(197, 1, 1);
+    --loginSubmit:#000;
+    --rowOdd:#818181;
+    --rowEven:#a8a8a8;
+    --arrow-back:#000;
+    --th:rgb(48, 19, 19);
+    --delete:rgb(104, 5, 5);
+    --button-background:rgb(0, 0, 0);
+    --button-color:#ebebe7;
+    --select-background:#aacad8;
+    --p-media:black;
+
+    div#change-mode{
+        background-image: url("../img/lightmode.png");
+        background-size: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+}
+
+body{
+    background-color: var(--background);
+}
+
+button#submit-login{
+    background-color: var(--loginSubmit);
+    color: var(--label-text);
+}
+
+div#inputs-group{
+    background-color: var(--loginSubmit);
+}
+
+div.elements-div{
+    background-color: var(--elements-div);
+}
+
+.media{
+    color: var(--p-media);
+}
+
+input[type="radio"]:checked{
+    background-color: var(--input-select);   
+}
+input[type="radio"]{
+    background-color: var(--input-radio);
+}
+
+.next-question{
+    background-color: var(--next-question);
+    color: var(--label-text);
+}
+
+tr:nth-child(even) {
+    background-color: var(--rowEven); 
+}
+
+tr:nth-child(odd) {
+    background-color: var(--rowOdd);
+}
+
+th{
+    background-color: var(--th);
+    color:var(--label-text);
+}
+
+a.delete{
+    color: var(--delete);
+}
+
+
+input[type="text"]{
+    border: 1px solid var(--border);
+    background-color: var(--select-background);
+}
+
+select{
+    background-color: var(--select-background);
+}
+
+button{
+    background-color: var(--button-background);
+    color: var(--button-color);
+    border: 1px solid var(--border);
+}
+
+p.arrow-back{
+    color: var(--arrow-back);
+}
+
+
+div#logo{
+    border: 4px solid var(--border);
+}
+
+
+input#login{
+    border: 2px solid var(--border);
+
+}
+
+div#inputs-group{
+    border: 2px solid var(--border);
+}
+
+.availableFalse{
+    color: var(--availableFalse);
+}
+
+
+.next-question{
+    border: 2px solid var(--border);
+}
+
+input[type="radio"]{
+    border: 2px solid var(--border);
+}
+
+
+
+input[type="text"]{
+    border: 1px solid var(--border);
+}
+
+
+table{
+    border: 1px solid var(--border);
+}
+
+tr,td,th{
+    border: 1px solid var(--border);
+}
+
+
+.box{
+    background-color: var(--box);
+}
+
+div.expanded{
+    border: 5px solid black;
+    background-color: var(--expanded);
+}
+
+h1,h2,h3,p{
+    color: var(--text-init-black);
+}

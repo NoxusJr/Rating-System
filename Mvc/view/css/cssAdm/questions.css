@@ -1,0 +1,93 @@
+div.elements-div{
+    margin: auto;
+    margin-top: 5vh;
+    width: 80vw;
+    padding-top: 6vh;
+    padding-bottom: 6vh;
+}
+
+
+div#about{
+    margin-top: 8vh;
+}
+
+input[type="text"]{
+    padding: 2px;
+    text-align: center;
+}
+
+div#list-workers{
+    overflow: hidden;
+    padding-left: 3vw;
+    padding-right: 3vw;
+}
+
+table{
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    overflow-x: scroll;
+    border-collapse: collapse;
+}
+
+tr,td,th{
+    padding: 5px;
+    overflow: hidden;
+    border-collapse: collapse;
+    text-align: center;
+    white-space: nowrap;
+}
+
+th{
+    font-weight: bolder;
+}
+
+a.delete{
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+div#list-workers{
+    overflow-x: auto;
+}
+
+#container{
+    margin: auto;
+    width: 80vw;
+}
+
+
+@media (min-width:1024px) {
+    #container{
+        width: 30vw;
+        background-color: var(--elements-div);
+        border-radius: 30px;
+        -webkit-box-shadow: 0px 0px 63px -37px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 63px -37px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 63px -37px rgba(0,0,0,0.75);
+        -webkit-border-radius: 35px;
+        -moz-border-radius: 35px;
+        border-radius: 35px;
+        text-align: center;
+    }
+
+    div#create-new-worker,#about{
+        width: 30vw;
+        padding: 0px;
+        margin: 0px;
+        border: 0px;
+        -webkit-box-shadow: 0px 0px 63px -37px rgba(0,0,0,0);
+        -moz-box-shadow: 0px 0px 63px -37px rgba(0,0,0,0);
+        box-shadow: 0px 0px 63px -37px rgba(0,0,0,0);
+        box-shadow: 0px;
+    }
+
+    #about{
+        padding-top: 5vh;
+        padding-bottom: 3vh;
+    }
+
+    div#create-new-worker{
+        padding-bottom: 5vh;
+    }
+}

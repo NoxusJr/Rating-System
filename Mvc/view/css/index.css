@@ -1,0 +1,93 @@
+div#logo{
+    margin: auto;
+    margin-top: 25vh;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    background-image: url("../img/logo.png");
+    background-size: contain;
+    background-color: black;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+p#description{
+    margin-top: 3vh;
+    text-align: center;
+}
+
+form{
+    margin-top: 6vh;
+    text-align: center;
+}
+
+input#login{
+    height: 30px;
+    width: 70vw;
+    border-radius: 130px;
+    padding: 5px;
+    text-align: left;
+}
+
+div#inputs-group{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 30px;
+    width: 70vw;
+    border-radius: 130px;
+}
+
+input#password{
+    height: 26px;
+    width: 85%;
+    padding: 5px;
+    -webkit-border-top-left-radius: 130px;
+    -webkit-border-bottom-left-radius: 130px;
+    -moz-border-radius-topleft: 130px;
+    -moz-border-radius-bottomleft: 130px;
+    border-top-left-radius: 130px;
+    border-bottom-left-radius: 130px;
+    border: 0px;
+}
+
+button{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0px;
+    width: 15%;
+    height: 26px;
+    -webkit-border-top-right-radius: 130px;
+    -webkit-border-bottom-right-radius: 130px;
+    -moz-border-radius-topright: 130px;
+    -moz-border-radius-bottomright: 130px;
+    border-top-right-radius: 130px;
+    border-bottom-right-radius: 130px;
+    border: 0px;
+    cursor: pointer;
+}
+
+
+
+@media (min-width:1024px) {
+    div#logo{
+        margin-top: 10vh;
+        width: 200px;
+        height: 200px;
+    }
+
+    p#description{
+        font-size: 20px;
+    }
+
+    input#login{
+        width: 40vw;
+    }
+    
+    div#inputs-group{
+        width: 40vw;
+    }
+}

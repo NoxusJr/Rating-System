@@ -58,9 +58,12 @@
 
                             if ($sector['id_sector'] == $questions[$i]['id_sector']){
                                 $question = $questions[$i]['question'];
-                                $media = $questions[$i]['media'];
+                                $total = $questions[$i]['total'];
+                                $negative = $questions[$i]['negative'];
+                                $negative = ($negative * 100)/$total;
+                                $negative = number_format($negative,2);
                                 $available = true;
-                                echo "<p class='media' style='padding:2px;background-color:#dfd7d7;text-align:left;width:80%;margin:auto;border:1px solid black;'><span style='margin-left:5px;font-weight:bolder;'>$question</span> | <span style='font-weight:bolder;color:red;'>Nota média:</span> $media</p>";
+                                echo "<p class='media' style='padding:2px;background-color:#dfd7d7;text-align:left;width:80%;margin:auto;border:1px solid black;'><span style='margin-left:5px;font-weight:bolder;'>$question</span> | <span style='font-weight:bolder;color:red;'>% De Reprovação:</span> $negative% | <span style='font-weight:bolder;color:black;'>Total de avaliações:</span> $total</p>";
                                 echo "<br>";
                             }
                         }

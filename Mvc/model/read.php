@@ -152,7 +152,7 @@ function getMediaQuestions(){
 
         $data = array();
 
-        $command= "SELECT ratings.id_question, ROUND(AVG(ratings.note)) AS media_note, questions.id_sector, questions.question FROM ratings JOIN questions ON ratings.id_question = questions.id_question GROUP BY ratings.id_question, questions.id_sector, questions.question ORDER BY ratings.id_question ASC;";
+        $command= "SELECT ratings.id_question, COUNT(*) AS total, SUM(CASE WHEN ratings.note IN (1, 2) THEN 1 ELSE 0 END) AS negative, SUM(CASE WHEN ratings.note NOT IN (1, 2) THEN 1 ELSE 0 END) AS others, questions.id_sector, questions.question FROM ratings JOIN questions ON ratings.id_question = questions.id_question GROUP BY ratings.id_question, questions.id_sector, questions.question ORDER BY ratings.id_question ASC;";
         
         $cursor = $pdo->prepare($command);
 
@@ -164,15 +164,16 @@ function getMediaQuestions(){
         for ($i=0;$i<count($result);$i++){
             
             if (isset($result[$i]) && $result[$i] !== null){
-                $media = $result[$i]['media_note'];
+                $negative = $result[$i]['negative'];
             } else {
-                $media = 0;
+                $negative = 0;
             }
 
             $new = array(
                 "id_sector"=>$result[$i]['id_sector'],
                 "question"=>$result[$i]['question'],
-                "media"=>$media,
+                "negative"=>$result[$i]['negative'],
+                "total"=>$result[$i]['total'],
             );
 
             array_push($data,$new);

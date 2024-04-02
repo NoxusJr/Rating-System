@@ -1,7 +1,7 @@
 <?php
 
 $root= dirname(dirname(__DIR__));
-require_once $root."\Database\config\connection.php";
+require_once $root."/Database/config/connection.php";
 
 
 function deleteQuestion($idQuestion){

@@ -6,7 +6,7 @@ function setCookieLogin($data){
         session_start();
     }
 
-    $idUser = $data["id_user"];
+    $idUser = $data["id_user"]; 
     $nameUser = $data["name"];
     $idSectorUser = $data["id_sector"];
     $permission = $data["permission"];
